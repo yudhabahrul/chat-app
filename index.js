@@ -27,10 +27,14 @@ const io = new Server(server, {
 
 connectDB();
 setupSocket(io);
-
+app.get("/", (req, res) => {
+  res.status(200).send("Yudha Bahrul Alam");
+});
 app.use(express.json());
 app.use("/api/groups", groupRoutes);
 app.use("/api", messageRoutes);
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT);
+server.listen(PORT, () => {
+  console.log("jalan");
+});
