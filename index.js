@@ -14,7 +14,7 @@ const app = express();
 const server = http.createServer(app);
 
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://chat-app-gamma-virid.vercel.app"],
+  origin: "*",
   methods: ["GET", "POST"],
   credentials: true,
 };
@@ -27,14 +27,10 @@ const io = new Server(server, {
 
 connectDB();
 setupSocket(io);
-app.get("/", (req, res) => {
-  res.status(200).send("Yudha Bahrul Alam");
-});
+
 app.use(express.json());
 app.use("/api/groups", groupRoutes);
 app.use("/api", messageRoutes);
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-  console.log("jalan");
-});
+server.listen(PORT);
