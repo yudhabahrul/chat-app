@@ -14,7 +14,7 @@ const app = express();
 const server = http.createServer(app);
 
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://chat-app-gamma-virid.vercel.app"],
+  origin: "*",
   methods: ["GET", "POST"],
   credentials: true,
 };
